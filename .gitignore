@@ -16,3 +16,6 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Large video files (use Git LFS if needed)
+genderRevealVid.mov
