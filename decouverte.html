@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La révélation... 💕</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="mystyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+QLD+Hand:wght@400..700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="decouverte-page">
+    <!-- Phase 1 : Countdown 15 secondes -->
+    <section id="countdown-section">
+        <p class="countdown-label">La révélation dans...</p> <br></br>
+        
+        <div class="countdown-number" id="countdown">15</div>
+        <button id="interrupt-btn" class="interrupt-button">Retour à l'accueil</button>
+    </section>
+
+
+    <!-- Phase 3 : Image ou gif de révélation -->
+    <section id="reveal-section" >
+        <div class="reveal-content">
+            <h1 class="its-a-boy-text-final" id="its-a-boy-text-final">IT'S A BOY</h1>
+            <div class="reveal-image-wrapper">
+                <img id="reveal-img" src="itaboyimage.gif" alt="C'est un garçon !">
+            </div>
+            <p class="reveal-caption" id="reveal-caption">👶</p>
+        </div>
+    </section>
+
+    <script>
+        (function () {
+            const COUNTDOWN_SECONDS = 15;
+            const countdownEl = document.getElementById("countdown");
+            const countdownSection = document.getElementById("countdown-section");
+            const revealSection = document.getElementById("reveal-section");
+            const revealImg = document.getElementById("reveal-img");
+            const revealCaption = document.getElementById("reveal-caption");
+            const interruptBtn = document.getElementById("interrupt-btn");
+            const body = document.body;
+
+            let remaining = COUNTDOWN_SECONDS;
+            let tickTimeout = null;
+            let gifTimeout = null;
+
+            function showBlackBackground() {
+                countdownSection.classList.add("hidden");
+                body.style.background = "#000";
+                // Après un court délai, afficher le confetti et le texte
+                setTimeout(showTextReveal, 300);
+            }
+
+            function showTextReveal() {
+                revealSection.classList.add("visible");
+                // Après 3 secondes, changer le background en gradient bleu
+                gifTimeout = setTimeout(showGif, 3000);
+            }
+
+            function showGif() {
+                // Changer le background en gradient bleu
+                body.style.background = "#020024";
+                body.style.background = "linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%)";
+                
+                // Si l'image n'a pas chargé, afficher un message
+                function checkImageLoaded() {
+                    if (!revealImg.complete || revealImg.naturalWidth === 0) {
+                        revealImg.style.display = "none";
+                        revealCaption.textContent = "🎉 C'est un garçon ! 🎉";
+                        revealCaption.classList.add("no-image-message");
+                    }
+                }
+                revealImg.onerror = function() {
+                    revealImg.style.display = "none";
+                    revealCaption.textContent = "🎉 C'est un garçon ! 🎉";
+                    revealCaption.classList.add("no-image-message");
+                };
+                setTimeout(checkImageLoaded, 200);
+            }
+
+            function showReveal() {
+                if (tickTimeout) {
+                    clearTimeout(tickTimeout);
+                }
+                if (gifTimeout) {
+                    clearTimeout(gifTimeout);
+                }
+                showBlackBackground();
+            }
+
+            function tick() {
+                if (remaining <= 0) {
+                    showReveal();
+                    return;
+                }
+                countdownEl.textContent = remaining;
+                remaining--;
+                tickTimeout = setTimeout(tick, 1000);
+            }
+
+            // Bouton pour retourner à l'accueil
+            interruptBtn.addEventListener("click", function() {
+                if (tickTimeout) {
+                    clearTimeout(tickTimeout);
+                }
+                if (gifTimeout) {
+                    clearTimeout(gifTimeout);
+                }
+                window.location.href = "index.html";
+            });
+
+            // Démarrer immédiatement
+            tick();
+        })();
+    </script>
+</body>
+</html>

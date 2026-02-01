@@ -1,0 +1,304 @@
+.milieu{
+margin-top: 80px;
+margin-bottom: 80px;
+margin-left: 10%;
+margin-right: 10%;
+background: #7F7FD5;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+border-radius: 15px;
+
+padding: 15%;
+
+
+height:100vh;
+}
+body{
+   background: #ee9ca7;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #ffdde1, #ee9ca7);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #ffdde1, #ee9ca7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.edu-qld-hand-milieu {
+  font-family: "Edu QLD Hand", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.Isitaboyoragirl{
+font-family: "Edu QLD Hand", cursive;
+font-optical-sizing: auto;
+font-weight: 500;
+font-style: normal;
+font-size:100px;
+color: rgb(239, 247, 235);
+
+}
+
+
+/* CSS */
+.decouvrir {
+
+  padding: 0.6em 2em;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.decouvrir:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-decouvrir 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-decouvrir {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.decouvrir:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #222;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+/* Styles pour decouverte.html */
+* { box-sizing: border-box; }
+
+body.decouverte-page {
+    font-family: 'Quicksand', sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    background: rgb(241, 233, 233);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    overflow-x: hidden;
+}
+
+/* Phase 1 : Countdown */
+#countdown-section {
+    text-align: center;
+    transition: opacity 0.5s ease;
+}
+
+#countdown-section.hidden {
+    display: none !important;
+}
+
+.countdown-label {
+    font-family: "Edu QLD Hand", cursive;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.countdown-number {
+    font-family: "Edu QLD Hand", cursive;
+    font-size: clamp(5rem, 25vw, 12rem);
+    font-weight: 700;
+    color: #000;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    line-height: 1;
+    margin-bottom: 2rem;
+}
+
+.interrupt-button {
+    font-family: "Edu QLD Hand", cursive;
+    font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+    font-weight: 600;
+    padding: 1em 2.5em;
+    border: 3px solid #fff;
+    outline: none;
+    color: white;
+    background: #ff6b9d;
+    cursor: pointer;
+    border-radius: 30px;
+    box-shadow: 0 6px 20px rgba(255, 107, 157, 0.5);
+    transition: all 0.3s ease;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    min-width: 200px;
+    margin-top: 1rem;
+}
+
+.interrupt-button:hover {
+    background: #ff4d7a;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 107, 157, 0.6);
+    border-color: #fff;
+}
+
+.interrupt-button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(255, 107, 157, 0.5);
+}
+
+/* Phase 2 : Texte "IT'S A BOY" */
+#text-reveal-section {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(241, 233, 233);
+    background-image: url('confettiBleu.gif');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.8s ease;
+}
+
+#text-reveal-section.visible {
+    display: flex !important;
+}
+
+.its-a-boy-text {
+    font-family: "Edu QLD Hand", cursive;
+    font-size: clamp(3rem, 15vw, 8rem);
+    font-weight: 700;
+    color: #2196f3;
+    text-shadow: 0 4px 20px rgba(33, 150, 243, 0.5);
+    margin: 0;
+    animation: pulse 1.5s ease-in-out infinite;
+    z-index: 10;
+    position: relative;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Phase 3 : Révélation image/gif */
+#reveal-section {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('confettiBleu.gif');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 2rem;
+    padding-bottom: 3rem;
+    animation: fadeIn 0.8s ease;
+}
+
+#reveal-section.visible {
+    display: flex !important;
+}
+
+.reveal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    z-index: 10;
+    position: relative;
+}
+
+.its-a-boy-text-final {
+    font-family: "Edu QLD Hand", cursive;
+    font-size: clamp(2.5rem, 12vw, 6rem);
+    font-weight: 700;
+    color: #2196f3;
+    text-shadow: 0 4px 20px rgba(33, 150, 243, 0.5);
+    margin: 0;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.reveal-image-wrapper {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    background: #fff;
+}
+
+.reveal-image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    vertical-align: middle;
+}
+
+.reveal-caption {
+    font-family: "Edu QLD Hand", cursive;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    color: #333;
+    margin-top: 1.5rem;
+}
+
+/* Si pas d'image : message de fallback */
+.no-image-message {
+    font-family: "Edu QLD Hand", cursive;
+    font-size: 1.8rem;
+    color: #c77dff;
+    padding: 2rem;
+}
